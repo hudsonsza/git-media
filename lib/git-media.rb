@@ -83,6 +83,23 @@ module GitMedia
         raise "git-media.secret not set for atmos transport"
       end
       GitMedia::Transport::AtmosClient.new(endpoint, uid, secret, tag)
+
+    when "webdav"
+      username = `git config git-media.webdavusername`.chomp
+      password = `git config git-media.webdavpassword`.chomp
+      url = `git config git-media.webdavurl`.chomp
+
+      if username === ""
+        raise "git-media.webdavusername not set for webdav transport"
+      end
+      if password === ""
+        raise "git-media.webdavpassword not set for webdav transport"
+      end
+      if url === ""
+        raise "git-media.webdavurl not set for webdav transport"
+      end
+      GitMedia::Transport::Webdav.new(url, username, password)
+
     else
       raise "Invalid transport #{transport}"
     end
