@@ -3,6 +3,7 @@ require 'fileutils'
 require 'git-media/transport/local'
 require 'git-media/transport/s3'
 require 'git-media/transport/scp'
+require 'git-media/transport/webdav'
 
 module GitMedia
 
