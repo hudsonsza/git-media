@@ -54,7 +54,6 @@ module GitMedia
         if File.exists?(from_file)
         
           File.open(from_file, "r") do |stream|
-            puts stream
             @webdav.put(sha, stream, File.size(from_file))
           end
           return true
