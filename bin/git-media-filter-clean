@@ -1,0 +1,13 @@
+#!/bin/bash
+
+media_buffer=$(git rev-parse --git-dir)
+media_buffer="${media_buffer}/media/objects"
+
+mkdir -p $media_buffer
+
+sha=$(sha1sum -b < /dev/stdin | cut -d " " -f1)
+
+cat /dev/stdin > ${media_buffer}/${sha}
+
+#echo ${media_buffer}/${sha} >&2
+echo "Saving media : ${sha}" >&2

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+media_buffer=$(git rev-parse --git-dir)
+media_buffer="${media_buffer}/media/objects"
+
+mkdir -p $media_buffer
+
+read sha
+
+if [ ${#sha} == 40 ]; then
+
+  media_file=${media_buffer}/${sha}
+
+  if [ -f $media_file ]; then
+
+      echo "recovering media : ${sha}" >&2
+      cat ${media_file}
+
+  else
+
+    echo "media missing, saving placeholder : ${sha}" >&2
+    echo ${sha}
+
+  fi
+
+else
+
+    # Caso nao seja um sha, retorna o arquivo 
+    echo 'Unknown git-media file format' >&2
+    cat /dev/stdin 
+
+fi

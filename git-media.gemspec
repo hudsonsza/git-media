@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-06-10}
   s.default_executable = %q{git-media}
   s.email = %q{schacon@gmail.com}
-  s.executables = ["git-media"]
+  s.executables = ["git-media","git-media-filter-clean","git-media-filter-smudge"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
